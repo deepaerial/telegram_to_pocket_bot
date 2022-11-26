@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "telegram_to_pocket_bot"
+version = "0.1.0"
+description = ""
+authors = ["author <author@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+telethon = "^1.26.0"
+httpx = "^0.23.1"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7.9"
+pdbpp = "^0.10.2"
+black = "^19.10b0"
+isort = "^4.3.21"
+pytest = "^5.3.5"
+mypy = "^0.961"
+pytest-cov = "^2.11.1"
+coverage = {extras = ["toml"], version = "^5.5"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+norecursedirs = [
+    ".venv",
+    "__pycache__"
+]
+python_files = [
+    "test_*.py"
+]
+python_functions = [
+    "test_*"
+]
+
+[tool.coverage.run]
+omit = [
+    ".venv/*", 
+    "tests/*"
+]
+
+[tool.mypy]
+python_version = "3.10"
+plugins = [
+    "pydantic.mypy"
+]
+allow_untyped_globals = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = false
+
+[tool.isort]
+profile = "black"
